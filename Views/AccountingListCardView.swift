@@ -10,27 +10,33 @@ struct AccountingListCardView: View {
                 .resizable()
                 .cornerRadius(100.0)
                 .frame(width:50, height: 50)
-            Text(accountingDetails.title).font(.headline)
+            
+            Text(accountingDetails.title)
+                .font(.headline)
+            
             Spacer()
+            
             Text(String(accountingDetails.totalBorrows))
                 .foregroundColor(.green)
                 .font(.caption)
                 .bold()
+            
             Text(String(accountingDetails.totalOwes))
                 .foregroundColor(.red)
                 .font(.caption2)
                 .bold()
-            Button(action: {
-                shouldExpand = !shouldExpand
-            }, label: {
-                if (shouldExpand) {
-                    Image(systemName: "arrowtriangle.up.fill")
-                        .foregroundColor(Color.gray)
-                } else {
-                    Image(systemName: "arrowtriangle.down.fill")
+            
+            Button(
+                action: {
+                    withAnimation{
+                         shouldExpand.toggle()
+                    }
+                },
+                label: {
+                    Image(systemName: shouldExpand ?  "arrowtriangle.down.fill" : "arrowtriangle.up.fill")
                         .foregroundColor(Color.gray)
                 }
-            }).font(.caption)
+            ).font(.caption)
         }.padding()
     }
 }
