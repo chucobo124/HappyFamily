@@ -18,17 +18,17 @@ struct AccountingListCardView: View {
                 
                 Spacer()
                 
-                HStack(){
-                    Text(String(accountingDetails.totalBorrows))
-                        .foregroundColor(.green)
-                        .font(.caption)
-                        .bold()
-                    
-                    Text(String(accountingDetails.totalOwes))
-                        .foregroundColor(.red)
-                        .font(.caption2)
-                        .bold()
-                }.frame(width: 100)
+                Text(String(accountingDetails.totalBorrows))
+                    .foregroundColor(.green)
+                    .font(.caption)
+                    .bold()
+                    .frame(width: 50, alignment: .trailing)
+                
+                Text(String(accountingDetails.totalOwes))
+                    .foregroundColor(.red)
+                    .font(.caption2)
+                    .bold()
+                    .frame(width: 50, alignment: .trailing)
                 
                 Button(
                     action: {
@@ -41,8 +41,8 @@ struct AccountingListCardView: View {
                             .foregroundColor(Color.gray)
                     }
                 ).font(.caption)
-            }
-            
+              }
+            Divider().padding(.horizontal, 10)
             // Expand Info
             VStack() {
                 ForEach (accountingDetails.groupSpents, id: \.name) { spent in
@@ -53,17 +53,17 @@ struct AccountingListCardView: View {
                             .frame(width:30, height: 30)
                         Text(spent.name).foregroundColor(.gray)
                         Spacer()
-                        HStack(){
-                            Text(String(spent.borrowed))
-                                .foregroundColor(.green)
-                                .font(.caption2)
-                                .bold()
-                            Spacer()
-                            Text(String(spent.owes))
-                                .foregroundColor(.red)
-                                .font(.caption)
-                                .bold()
-                        }.frame(width: 90)
+                        Text(String(spent.borrowed))
+                            .foregroundColor(.green)
+                            .font(.caption2)
+                            .bold()
+                            .frame(width: 50, alignment: .trailing)
+                        Text(String(spent.owes))
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                            .bold()
+                            .frame(width: 50, alignment: .trailing)
                     }.padding(.leading, 60)
                         .padding(.trailing, 30)
                 }
