@@ -1,6 +1,7 @@
 import Foundation
 
 struct AccountingDetails {
+    var uuid: String
     var title: String
     var avatarURL: String
     var totalBorrows: Float64
